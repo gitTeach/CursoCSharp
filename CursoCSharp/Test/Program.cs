@@ -121,41 +121,58 @@ namespace Test
 
             //#endregion
 
-            #region HerenciaPersona
+            //#region HerenciaPersona
 
 
-            Persona P1 = new Persona();
-            Persona P2 = new Persona("0501", "Josue", 30, "Masculino");
+            //Persona P1 = new Persona();
+            //Persona P2 = new Persona("0501", "Josue", 30, "Masculino");
 
-            Estudiante E1 = new Estudiante();
-            Estudiante E2 = new Estudiante("6121", "Ceutec", 2012, 0.00);
-            Estudiante E3 = new Estudiante("0501", "Josue", 30, "Masculino",
-                                            "6121", "Ceutec", 2012, 1000.00);
-
-            
-            E3.MostrarInfo();
-            Console.WriteLine("======================");
-
-            Trabajador T1 = new Trabajador("1605", "Rosa", 31, "Femenino",
-                                            "La Economica", "Gerente General", 18000);
-
-            E3.incrementarValor();
-            Console.WriteLine("======================");
-            E3.MostrarInfo();
-            Console.WriteLine("======================");
+            //Estudiante E1 = new Estudiante();
+            //Estudiante E2 = new Estudiante("6121", "Ceutec", 2012, 0.00);
+            //Estudiante E3 = new Estudiante("0501", "Josue", 30, "Masculino",
+            //                                "6121", "Ceutec", 2012, 1000.00);
 
 
-            T1.incrementarValor();
-            Console.WriteLine("======================");
-            T1.MostrarInfo();
-            Console.WriteLine("======================");
+            //E3.MostrarInfo();
+            //Console.WriteLine("======================");
+
+            //Trabajador T1 = new Trabajador("1605", "Rosa", 31, "Femenino",
+            //                                "La Economica", "Gerente General", 18000);
+
+            //E3.incrementarValor();
+            //Console.WriteLine("======================");
+            //E3.MostrarInfo();
+            //Console.WriteLine("======================");
 
 
+            //T1.incrementarValor();
+            //Console.WriteLine("======================");
+            //T1.MostrarInfo();
+            //Console.WriteLine("======================");
+
+
+
+
+            //#endregion
+
+            #region
+            // Figura f = new Figura(); 
+            //No se puede instanciar debido a que Figura es clase abstracta
+
+
+            Figura F = new Cilindro(2, 4);
+            Console.WriteLine("====== Polimorfismo =======");
+            Console.WriteLine("====== Cilindro =======");
+            Console.WriteLine(F.Area());
+            Console.WriteLine(F.AreaAbstracto());
+            Console.WriteLine("====== Polimorfismo =======");
+            Console.WriteLine("====== Triangulo =======");
+            F = new Triangulo(2, 4);
+            Console.WriteLine(F.Area());
+            Console.WriteLine(F.AreaAbstracto());
 
 
             #endregion
-
-
 
 
 
