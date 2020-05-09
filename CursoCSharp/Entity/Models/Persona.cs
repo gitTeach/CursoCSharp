@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Entity.Interfaces;
 
 namespace Entity.Models
 {
-    public class Persona
+    public class Persona : Metodos
     {
         protected string Identidad { get; set; }
         private string Nombre { get; set; }
@@ -34,6 +35,22 @@ namespace Entity.Models
             Console.WriteLine("{0}{1}", "Sexo: ", this.Sexo);
         }
 
+        public void Imprimir()
+        {
+            Console.WriteLine("{0}{1}", "Identidad: ", this.Identidad);
+            Console.WriteLine("{0}{1}", "Nombre: ", this.Nombre);
+            Console.WriteLine("{0}{1}", "Edad: ", this.Edad);
+            Console.WriteLine("{0}{1}", "Sexo: ", this.Sexo);
+        }
+
+        public void incrementarValor()
+        {
+            
+        }
+        public double getValor()
+        {
+            return 0.00;
+        }
 
 
 

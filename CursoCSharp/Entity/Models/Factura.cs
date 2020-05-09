@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Entity.Models
 {
-    public class Factura
+    public sealed class Factura
     {
         public int NPieza { get; set; }
         public string Descripcion { get; set; }

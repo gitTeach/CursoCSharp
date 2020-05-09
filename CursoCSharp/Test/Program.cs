@@ -130,13 +130,27 @@ namespace Test
             Estudiante E1 = new Estudiante();
             Estudiante E2 = new Estudiante("6121", "Ceutec", 2012, 0.00);
             Estudiante E3 = new Estudiante("0501", "Josue", 30, "Masculino",
-                                            "6121", "Ceutec", 2012, 0.00);
-
-            Console.WriteLine("======================");
-            E3.MostrarInfo();
+                                            "6121", "Ceutec", 2012, 1000.00);
 
             
+            E3.MostrarInfo();
             Console.WriteLine("======================");
+
+            Trabajador T1 = new Trabajador("1605", "Rosa", 31, "Femenino",
+                                            "La Economica", "Gerente General", 18000);
+
+            E3.incrementarValor();
+            Console.WriteLine("======================");
+            E3.MostrarInfo();
+            Console.WriteLine("======================");
+
+
+            T1.incrementarValor();
+            Console.WriteLine("======================");
+            T1.MostrarInfo();
+            Console.WriteLine("======================");
+
+
 
 
             #endregion
