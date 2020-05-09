@@ -6,8 +6,8 @@ namespace Entity.Models
 {
     public class Persona
     {
-        public string Identidad { get; set; }
-        public string Nombre { get; set; }
+        protected string Identidad { get; set; }
+        private string Nombre { get; set; }
         public int Edad { get; set; }
         public string Sexo { get; set; }
 
@@ -24,6 +24,14 @@ namespace Entity.Models
             this.Nombre = N;
             this.Edad = E;
             this.Sexo = S;
+        }
+
+        public void MostrarInfo()
+        {
+            Console.WriteLine("{0}{1}", "Identidad: ", this.Identidad);
+            Console.WriteLine("{0}{1}", "Nombre: ", this.Nombre);
+            Console.WriteLine("{0}{1}", "Edad: ", this.Edad);
+            Console.WriteLine("{0}{1}", "Sexo: ", this.Sexo);
         }
 
 

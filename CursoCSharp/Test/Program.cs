@@ -96,27 +96,47 @@ namespace Test
             */
 
 
-            #region Ejercicio1LabSemana1
-            Fecha F = new Fecha(2, 5, 2020);
-            F.Imprimir("dd/mm/yyyy");
-            Console.WriteLine("Cambiando formato.....");
-            F.Imprimir("mm/dd/yyyy");
-            Console.WriteLine("Cambiando formato.....");
-            F.Imprimir("dd/MM/yyyy");
+            //#region Ejercicio1LabSemana1
+            //Fecha F = new Fecha(2, 5, 2020);
+            //F.Imprimir("dd/mm/yyyy");
+            //Console.WriteLine("Cambiando formato.....");
+            //F.Imprimir("mm/dd/yyyy");
+            //Console.WriteLine("Cambiando formato.....");
+            //F.Imprimir("dd/MM/yyyy");
 
-            Fecha F2 = new Fecha(32, 1, 2020); //Dia de mas
-            Fecha F3 = new Fecha(31, 1, -1); //Año no valido
-            Fecha F4 = new Fecha(31, -1, 2020); //Mes no valido
-            Fecha F5 = new Fecha(-31, 1, 2020); //Dia no valido
-            Fecha F6 = new Fecha(29, 2, 2020); //Dia de mas para Febrero
-            Fecha F7 = new Fecha(31, 6, 2020); //Dia de mas para Junio
-            Fecha F8 = new Fecha(31, 1, 2020); //Fecha correcta para Enero
-            Fecha F9 = new Fecha(30, 6, 2020); //Fecha correcta para Junio
+            //Fecha F2 = new Fecha(32, 1, 2020); //Dia de mas
+            //Fecha F3 = new Fecha(31, 1, -1); //Año no valido
+            //Fecha F4 = new Fecha(31, -1, 2020); //Mes no valido
+            //Fecha F5 = new Fecha(-31, 1, 2020); //Dia no valido
+            //Fecha F6 = new Fecha(29, 2, 2020); //Dia de mas para Febrero
+            //Fecha F7 = new Fecha(31, 6, 2020); //Dia de mas para Junio
+            //Fecha F8 = new Fecha(31, 1, 2020); //Fecha correcta para Enero
+            //Fecha F9 = new Fecha(30, 6, 2020); //Fecha correcta para Junio
 
-            //Pruebas
-           
+            ////Pruebas
 
 
+
+
+
+            //#endregion
+
+            #region HerenciaPersona
+
+
+            Persona P1 = new Persona();
+            Persona P2 = new Persona("0501", "Josue", 30, "Masculino");
+
+            Estudiante E1 = new Estudiante();
+            Estudiante E2 = new Estudiante("6121", "Ceutec", 2012, 0.00);
+            Estudiante E3 = new Estudiante("0501", "Josue", 30, "Masculino",
+                                            "6121", "Ceutec", 2012, 0.00);
+
+            Console.WriteLine("======================");
+            E3.MostrarInfo();
+
+            
+            Console.WriteLine("======================");
 
 
             #endregion
