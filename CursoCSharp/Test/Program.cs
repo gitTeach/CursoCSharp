@@ -1,4 +1,6 @@
-﻿using Entity.Models;
+﻿using Data.Repositories;
+using Entity.DBModels;
+using Entity.Models;
 using System;
 using System.Collections.Generic;
 
@@ -159,7 +161,7 @@ namespace Test
             // Figura f = new Figura(); 
             //No se puede instanciar debido a que Figura es clase abstracta
 
-
+            /*
             Figura F = new Cilindro(2, 4);
             Console.WriteLine("====== Polimorfismo =======");
             Console.WriteLine("====== Cilindro =======");
@@ -170,6 +172,25 @@ namespace Test
             F = new Triangulo(2, 4);
             Console.WriteLine(F.Area());
             Console.WriteLine(F.AreaAbstracto());
+            */
+
+            AgenteRepository repository = new AgenteRepository();
+            Agente agente = new Agente();
+
+            /*agente.Nombre = "Jose";
+            agente.Apellido = "Lizandro";
+            agente.Salario = 30000;
+            agente.NumeroTelefono = "11223344";
+            */
+
+
+            var guardar = repository.Save(agente);
+
+            Console.WriteLine(guardar);
+            agente.IdAgente = 7;
+            agente.IdBase = 1;
+            var actualizar = repository.Update(agente);
+            Console.WriteLine(actualizar);
 
 
             #endregion

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Entity.DBModels;
 
@@ -8,17 +9,19 @@ namespace Data.Repositories
     public interface IAgenteRepository
     {
 
-        bool Save();
+        bool Save(Agente agente);
 
-        Agente GetbyId();
+        Agente GetbyId(int id);
 
-        List<Agente> GetAll();
+        IQueryable<Agente> GetAll();
 
-        bool Update();
+        bool Update(Agente agente);
 
-        bool Delete();
+        bool Delete(int id);
 
-        bool Exist();
+        bool Exist(int id);
+
+        bool Exist(string Nombre);
 
 
 
