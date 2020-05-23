@@ -8,6 +8,9 @@ namespace Test
 {
     class Program
     {
+
+        static AgenteRepository repository = new AgenteRepository();
+        static Agente agente = new Agente();
         static void Main(string[] args)
         {
             /*
@@ -174,8 +177,51 @@ namespace Test
             Console.WriteLine(F.AreaAbstracto());
             */
 
-            AgenteRepository repository = new AgenteRepository();
-            Agente agente = new Agente();
+            
+
+            int resp = 1;
+            bool operacionexitosa = false;
+
+            do
+            {
+                Console.WriteLine("============================");
+                Console.WriteLine("1. Registrar agente");
+                Console.WriteLine("2. Actualizar agente");
+                Console.WriteLine("3. Eliminar agente");
+                Console.WriteLine("4. Buscar agente");
+                Console.WriteLine("5. Listar todos los agentes");
+                Console.WriteLine("6. Asociar Agente a Base");
+                Console.WriteLine("7. Salir");
+                Console.WriteLine("============================");
+
+                Console.WriteLine("Ingrese opcion");
+                resp = Convert.ToInt32(Console.ReadLine());
+
+                switch (resp)
+                {
+                    case 1:
+                        agente = Agregar();
+                        operacionexitosa = repository.Save(agente);
+
+                        if (operacionexitosa)
+                            Console.WriteLine("Se ha agregado el registro");
+                        break;
+                    case 4:
+                        Buscar();
+                        break;
+                    case 5:
+                        Listar();
+                        break;
+
+                    default:
+                        break;
+                }
+
+
+            } while (resp != 7);
+
+            
+
 
             /*agente.Nombre = "Jose";
             agente.Apellido = "Lizandro";
@@ -183,7 +229,7 @@ namespace Test
             agente.NumeroTelefono = "11223344";
             */
 
-
+            /*
             var guardar = repository.Save(agente);
 
             Console.WriteLine(guardar);
@@ -192,7 +238,7 @@ namespace Test
             var actualizar = repository.Update(agente);
             Console.WriteLine(actualizar);
 
-
+            */
             #endregion
 
 
@@ -206,5 +252,73 @@ namespace Test
 
 
         }
+
+        static Agente Agregar()
+        {
+            Agente agente = new Agente();
+            Console.WriteLine("Nombre: ");
+            agente.Nombre = Console.ReadLine();
+            Console.WriteLine("Apellido: ");
+            agente.Apellido = Console.ReadLine();
+            Console.WriteLine("Telefono: ");
+            agente.NumeroTelefono = Console.ReadLine();
+            Console.WriteLine("Salario: ");
+            agente.Salario = Convert.ToDecimal(Console.ReadLine());
+
+            return agente;
+        }
+
+        static Agente Actualizar()
+        {
+            Agente agente = new Agente();
+            Console.WriteLine("Nombre: ");
+            agente.Nombre = Console.ReadLine();
+            Console.WriteLine("Apellido: ");
+            agente.Apellido = Console.ReadLine();
+            Console.WriteLine("Telefono: ");
+            agente.NumeroTelefono = Console.ReadLine();
+            Console.WriteLine("Salario: ");
+            agente.Salario = Convert.ToDecimal(Console.ReadLine());
+
+            return agente;
+        }
+
+        static void Buscar()
+        {
+            Console.WriteLine("Ingrese el id del agente");
+            int id = Convert.ToInt32(Console.ReadLine());
+            agente = repository.GetbyId(id);
+            if (agente != null)
+            {
+                MostrarInfo(agente);
+            }
+        }
+
+        static void Listar()
+        {
+            var data = repository.GetAll();
+            if (data != null)
+            {
+                Console.Clear();
+                foreach (var item in data)
+                {
+                    MostrarInfo(item);
+                }
+            }
+        }
+
+        static void MostrarInfo(Agente agente)
+        {   
+            Console.WriteLine("======================");
+            Console.WriteLine("{0} : {1}", "Id", agente.IdAgente);
+            Console.WriteLine("{0} : {1}", "Nombre", agente.Nombre);
+            Console.WriteLine("{0} : {1}", "Apellido", agente.Apellido);
+            Console.WriteLine("{0} : {1}", "IdBase", agente.IdBase);
+            Console.WriteLine("{0} : {1}", "Numero Telefono", agente.NumeroTelefono);
+            Console.WriteLine("{0} : {1}", "Salario", agente.Salario);
+            Console.WriteLine("======================");
+        }
+
+    
     }
 }

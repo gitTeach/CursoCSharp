@@ -18,7 +18,25 @@ namespace Data.Repositories
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var data = db.TAgente.Find(id);
+                if (data != null)
+                {
+                    db.TAgente.Remove(data);
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
         }
 
         public bool Exist(int id)
