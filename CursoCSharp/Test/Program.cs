@@ -10,6 +10,7 @@ namespace Test
     {
 
         static AgenteRepository repository = new AgenteRepository();
+        static AgentesPorBaseRepository repositoryAgente = new AgentesPorBaseRepository();
         static Agente agente = new Agente();
         static void Main(string[] args)
         {
@@ -177,8 +178,26 @@ namespace Test
             Console.WriteLine(F.AreaAbstracto());
             */
 
-            
+            /*agente.Nombre = "Jose";
+            agente.Apellido = "Lizandro";
+            agente.Salario = 30000;
+            agente.NumeroTelefono = "11223344";
+            */
 
+            /*
+            var guardar = repository.Save(agente);
+
+            Console.WriteLine(guardar);
+            agente.IdAgente = 7;
+            agente.IdBase = 1;
+            var actualizar = repository.Update(agente);
+            Console.WriteLine(actualizar);
+
+            */
+            #endregion
+
+            /*
+            #region Menu
             int resp = 1;
             bool operacionexitosa = false;
 
@@ -220,27 +239,33 @@ namespace Test
 
             } while (resp != 7);
 
-            
-
-
-            /*agente.Nombre = "Jose";
-            agente.Apellido = "Lizandro";
-            agente.Salario = 30000;
-            agente.NumeroTelefono = "11223344";
+            #endregion Menu
             */
 
-            /*
-            var guardar = repository.Save(agente);
+            /*Semana 5*/
 
-            Console.WriteLine(guardar);
-            agente.IdAgente = 7;
-            agente.IdBase = 1;
-            var actualizar = repository.Update(agente);
-            Console.WriteLine(actualizar);
+            #region AgentePorBase
 
-            */
+            var data = repositoryAgente.Listar(1);
+
+            if (data != null)
+            {
+                
+                Console.WriteLine("{0} : {1}", "Id Base", data.IdBase);
+                Console.WriteLine("{0} : {1}", "Nombre", data.Nombre);
+                Console.WriteLine("{0} : {1}", "Direccion", data.Direccion);
+
+                foreach (var item in data.ListaAgentes)
+                {
+                    Console.WriteLine("==================");
+                    Console.WriteLine("{0} : {1}", "Id Agente", item.IdAgente);
+                    Console.WriteLine("{0} : {1}", "Nombre", item.Nombre);
+                    Console.WriteLine("{0} : {1}", "Apellido", item.Apellido);
+                }
+
+            }
+
             #endregion
-
 
 
 
