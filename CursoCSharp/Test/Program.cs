@@ -245,8 +245,8 @@ namespace Test
             /*Semana 5*/
 
             #region AgentePorBase
-
-            var data = repositoryAgente.Listar(1);
+            int idBase = 1;
+            var data = repositoryAgente.Listar(idBase);
 
             if (data != null)
             {
@@ -264,6 +264,26 @@ namespace Test
                 }
 
             }
+
+            Console.WriteLine("=====FORMA 2=====");
+
+            var ListarAgentes = repositoryAgente.ListarAgentes(idBase);
+
+            if (ListarAgentes != null)
+            {
+                foreach (var item in ListarAgentes)
+                {
+                    Console.WriteLine("==================");
+                    Console.WriteLine("{0} : {1}", "Id Agente", item.IdAgente);
+                    Console.WriteLine("{0} : {1}", "Nombre", item.Nombre);
+                    Console.WriteLine("{0} : {1}", "Id Base", item.IdBase);
+                    Console.WriteLine("{0} : {1}", "Nombre Base", item.NombreBase);
+                }
+
+            }
+            var total = repositoryAgente.CantAgentexBase(idBase);
+            Console.WriteLine("Total de Agentes asignado a base " + idBase + ": " + total);
+
 
             #endregion
 

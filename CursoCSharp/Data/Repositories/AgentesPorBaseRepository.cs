@@ -16,6 +16,20 @@ namespace Data.Repositories
             db = new DB_Context();
         }
 
+        public int CantAgentexBase(int idBase)
+        {
+            try
+            {
+                var data = db.TAgente.Where(x => x.IdBase == idBase && x.Nombre == "Juan").Count();
+                return data;
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+        }
+
         public AgentesPorBase Listar(int id)
         {
             try
@@ -58,6 +72,27 @@ namespace Data.Repositories
 
             }
             catch (Exception ex)
+            {
+                return null;
+                throw;
+            }
+        }
+
+        public IQueryable<ListaAgentePorBases> ListarAgentes(int idBase)
+        {
+            try
+            {
+                var data = db.TAgente.Where(x => x.IdBase == idBase)
+                                       .Select(x => new ListaAgentePorBases
+                                       {
+                                           IdAgente = x.IdAgente,
+                                           Nombre = x.Nombre,
+                                           IdBase = x.IdBase,
+                                           NombreBase = x.IdBaseNavigation.Nombre
+                                       });
+                return data != null ? data : null;
+            }
+            catch (Exception)
             {
                 return null;
                 throw;
