@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Data.Repositories;
+using Entity.DBModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -39,6 +40,28 @@ namespace WebAPI.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError);
                 throw;
             }
+        }
+
+        [HttpPost]
+        [ActionName("save")]
+        public IActionResult Save([FromBody] Agente agente)
+        {
+            try
+            {
+                var exist = _agenteRepository.Exist(agente.Nombre);
+                if (exist) return BadRequest("Agente ya existe");
+
+                var data = _agenteRepository.Save(agente);
+                if (data) return Created("", data);
+                else return Ok(data);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         #endregion
