@@ -64,6 +64,23 @@ namespace WebAPI.Controllers
 
         }
 
+        [HttpGet]
+        [ActionName("getById")]
+        public IActionResult getById([FromQuery] int id) {
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+
         #endregion
 
 
