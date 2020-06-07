@@ -70,6 +70,16 @@ namespace WebAPI.Controllers
 
             try
             {
+                var data = _agenteRepository.GetbyId(id);
+                if (data != null)
+                {
+                    return Ok(data);
+                }
+                else
+                {
+                    return BadRequest("No se encontró un agente para el id proporcionado");
+                }
+
 
             }
             catch (Exception)
