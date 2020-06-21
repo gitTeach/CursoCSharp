@@ -6,6 +6,7 @@ using Data.Repositories;
 using Entity.DBModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Unity;
 
 namespace WebAPI.Controllers
 {
@@ -16,11 +17,18 @@ namespace WebAPI.Controllers
 
         #region Campos
 
-        public AgenteRepository _agenteRepository {get; set;}
+        [Dependency]
+        public IAgenteRepository _agenteRepository { get; set; }
+        //public AgenteRepository _agenteRepository {get; set;}
 
-        public tAgenteController()
+        //public tAgenteController()
+        //{
+        //    _agenteRepository = new AgenteRepository();
+        //}
+
+        public tAgenteController(IAgenteRepository agenteRepository)
         {
-            _agenteRepository = new AgenteRepository();
+            this._agenteRepository = agenteRepository;
         }
 
         #endregion

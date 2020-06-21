@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Unity;
+using Data;
 
 namespace WebAPI
 {
@@ -44,5 +46,20 @@ namespace WebAPI
                 endpoints.MapControllers();
             });
         }
+
+        public void ConfigureContainer(IUnityContainer container)
+        {
+            RegisterTypes(container);
+        }
+        public static void RegisterTypes(IUnityContainer container)
+        {
+            var registerData = DiRegisterData.GetDataList();
+            foreach (var item in registerData)
+            {
+                container.RegisterType(item.GetInterface(), item.GetClass());
+            }
+
+        }
+
     }
 }
