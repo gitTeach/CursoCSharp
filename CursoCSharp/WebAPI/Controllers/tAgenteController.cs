@@ -12,7 +12,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]/[action]/{id?}")]
     [ApiController]
-    public class tAgenteController : ControllerBase
+    public class tAgenteController : BaseApiController
     {
 
         #region Campos
@@ -40,8 +40,15 @@ namespace WebAPI.Controllers
         {
             try
             {
+                if (ValidateToken()) 
+                { 
                 var data = _agenteRepository.GetAll();
                 return Ok(data);
+                }
+                else
+                {
+                    return this.StatusCode(StatusCodes.Status401Unauthorized, "Token no valido");
+                }
             }
             catch (Exception)
             {
@@ -98,6 +105,41 @@ namespace WebAPI.Controllers
 
         }
 
+        [HttpGet]
+        [ActionName("listarAlumnos")]
+        public IActionResult listarAlumnos()
+        {
+            try
+            {   
+                return Ok(ListadoAlumnos);
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError);
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [ActionName("agregarAlumnos")]
+        public IActionResult agregarAlumnos([FromQuery] string nombre)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(nombre))
+                    return BadRequest("Nombre no valido");
+                else
+                {
+                    agregarAlumno(nombre);
+                    return Ok("alumno agregado");
+                }
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError);
+                throw;
+            }
+        }
 
         #endregion
 
